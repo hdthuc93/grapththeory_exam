@@ -6,10 +6,36 @@
 //  Copyright © 2017 ThucHD. All rights reserved.
 //
 
-#include <iostream>
+
+#include "implement_func.hpp"
 
 int main(int argc, const char * argv[]) {
     // insert code here...
-    std::cout << "Hello, World!\n";
+    int numOfVertexes;
+    short** adjacencyMatrix = NULL;
+    bool resultReadData = readData("data.txt", numOfVertexes, adjacencyMatrix);
+    
+    if(resultReadData) {
+//        for(int i = 0; i < numOfVertexes; ++i) {
+//            for(int j = 0; j < numOfVertexes; ++j) {
+//                std::cout << adjacencyMatrix[i][j] << " ";
+//            }
+//            std::cout << std::endl;
+//        }
+        
+        
+        bool trackingPoint[numOfVertexes];
+        
+        for (int i = 0; i < numOfVertexes; ++i) {
+            trackingPoint[i] = false;
+        }
+        
+        DFS_simple_v1(3, trackingPoint, numOfVertexes, adjacencyMatrix);
+    }
+    std::cout << std::endl;
+    
+    
+    
+    delete adjacencyMatrix;
     return 0;
 }
