@@ -16,25 +16,16 @@ int main(int argc, const char * argv[]) {
     bool resultReadData = readData("data.txt", numOfVertexes, adjacencyMatrix);
     
     if(resultReadData) {
-//        for(int i = 0; i < numOfVertexes; ++i) {
-//            for(int j = 0; j < numOfVertexes; ++j) {
-//                std::cout << adjacencyMatrix[i][j] << " ";
-//            }
-//            std::cout << std::endl;
-//        }
-        
-        
-        bool trackingPoint[numOfVertexes];
+        bool trackingPointDFS[numOfVertexes];
         
         for (int i = 0; i < numOfVertexes; ++i) {
-            trackingPoint[i] = false;
+            trackingPointDFS[i] = false;
         }
         
-        DFS_simple_v1(3, trackingPoint, numOfVertexes, adjacencyMatrix);
+//        DFS_simple_v1(3, trackingPointDFS, numOfVertexes, adjacencyMatrix);
+        BFS_simple_v1(numOfVertexes, adjacencyMatrix);
     }
     std::cout << std::endl;
-    
-    
     
     delete adjacencyMatrix;
     return 0;
