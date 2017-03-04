@@ -22,8 +22,9 @@ int main(int argc, const char * argv[]) {
             trackingPointDFS[i] = false;
         }
         
-//        DFS_simple_v1(3, trackingPointDFS, numOfVertexes, adjacencyMatrix);
-        BFS_simple_v1(numOfVertexes, adjacencyMatrix);
+        DFS_simple_v1(3, trackingPointDFS, numOfVertexes, adjacencyMatrix);
+        DFS_simple_v2(numOfVertexes, adjacencyMatrix);
+//        BFS_simple_v1(numOfVertexes, adjacencyMatrix);
     }
     std::cout << std::endl;
     

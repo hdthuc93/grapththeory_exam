@@ -9,6 +9,7 @@
 #include "implement_func.hpp"
 #include <fstream>
 #include <vector>
+#include <stack>
 
 using namespace std;
 
@@ -60,6 +61,48 @@ void DFS_simple_v1(int local, bool trackingPoint[], int numOfVertexes, short** a
             cout << "Back to point: " << local << endl;
         }
     }
+}
+
+void DFS_simple_v2(int numOfVertexes, short** adjacencyMatrix) {
+    int startVer = 3;
+    int verLabels[numOfVertexes];
+    
+    for(int i = 0; i < numOfVertexes; ++i) {
+        verLabels[i] = 0;
+    }
+    
+    stack<int> stackVers;
+    stackVers.push(startVer);
+    
+    cout << "DFS version 2: ";
+    
+    while(!stackVers.empty()) {
+        int iVerLabel = stackVers.top();
+        bool isNotCont = true;
+//        if(verLabels[iVerLabel] != 0) {
+//            stackVers.pop();
+//            continue;
+//        }
+        
+        verLabels[iVerLabel] = 1;
+        
+        // Print result
+        cout << iVerLabel << " ";
+        
+        for(int i = 0; i < numOfVertexes; ++i) {
+            if(adjacencyMatrix[iVerLabel][i] == 1 && verLabels[i] == 0) {
+                stackVers.push(i);
+                isNotCont = false;
+                break;
+            }
+        }
+        
+        if(isNotCont) {
+            stackVers.pop();
+        }
+    }
+    cout << endl;
+    
 }
 
 void BFS_simple_v1(int numOfVertexes, short** adjacencyMatrix) {
