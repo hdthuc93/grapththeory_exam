@@ -13,6 +13,23 @@
 
 using namespace std;
 
+struct point {
+    int x;
+    int y;
+};
+
+bool pointIsExists(vector<point> vp, point p) {
+    
+    int len = (int)vp.size();
+    
+    for(int i = 0; i < len; ++i) {
+        if(vp[i].x == p.x && vp[i].y == p.y)
+            return true;
+    }
+    
+    return false;
+}
+
 bool isPointExistInQueue(vector<int> v, int element) {
     for(int i = 0; i < v.size(); ++i) {
         if(element == v[i])
@@ -74,15 +91,11 @@ void DFS_simple_v2(int numOfVertexes, short** adjacencyMatrix) {
     stack<int> stackVers;
     stackVers.push(startVer);
     
-    cout << "DFS version 2: ";
+    cout << "\nDFS version 2: ";
     
     while(!stackVers.empty()) {
         int iVerLabel = stackVers.top();
         bool isNotCont = true;
-//        if(verLabels[iVerLabel] != 0) {
-//            stackVers.pop();
-//            continue;
-//        }
         
         verLabels[iVerLabel] = 1;
         
@@ -104,6 +117,7 @@ void DFS_simple_v2(int numOfVertexes, short** adjacencyMatrix) {
     cout << endl;
     
 }
+
 
 void BFS_simple_v1(int numOfVertexes, short** adjacencyMatrix) {
     vector<int> pointsInQueue;
@@ -137,6 +151,84 @@ void BFS_simple_v1(int numOfVertexes, short** adjacencyMatrix) {
         }
     }
 }
+
+void findTheWayHorseFromAtoB_v1() {
+    point start, end;
+    start.x = 1;
+    start.y = 1;
+    
+    end.x = 7;
+    end.y = 6;
+    
+    point nextPoint[8];
+    nextPoint[0].y = 2;
+    nextPoint[0].x = 1;
+    
+    nextPoint[1].y = 1;
+    nextPoint[1].x = 2;
+    
+    nextPoint[2].y = -1;
+    nextPoint[2].x = 2;
+    
+    nextPoint[3].y = -2;
+    nextPoint[3].x = 1;
+    
+    nextPoint[4].y = -2;
+    nextPoint[4].x = -1;
+    
+    nextPoint[5].y = -1;
+    nextPoint[5].x = -2;
+    
+    nextPoint[6].y = 1;
+    nextPoint[6].x = -2;
+    
+    nextPoint[7].y = 2;
+    nextPoint[7].x = -1;
+    
+    // run DFS
+    vector<point> tracking;
+
+    stack<point> stackVers;
+    stackVers.push(start);
+    
+    cout << "List step of horse: " << endl;
+    
+    while(!stackVers.empty()) {
+        point currentPoint = stackVers.top();
+        tracking.push_back(currentPoint);
+        
+        cout << "x = " << currentPoint.x << " --- y = " << currentPoint.y << endl;
+        
+        if(currentPoint.x == end.x && currentPoint.y == end.y)
+            break;
+        
+        for(int i = 0; i < 7; ++i) {
+            point desPoint;
+            desPoint.x = currentPoint.x + nextPoint[i].x;
+            desPoint.y = currentPoint.y + nextPoint[i].y;
+            
+            if(desPoint.x > 7 || desPoint.x < 0 || desPoint.y > 7 || desPoint.y < 0)
+                continue;
+            
+            if(pointIsExists(tracking, desPoint))
+                continue;
+            
+            stackVers.push(desPoint);
+            break;
+        }
+    }
+    
+    cout << "End!!!!!!! " << endl << endl;
+
+    
+}
+
+
+
+
+
+
+
 
 
 

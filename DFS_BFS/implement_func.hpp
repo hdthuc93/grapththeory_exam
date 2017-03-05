@@ -17,4 +17,6 @@ void DFS_simple_v2(int numOfVertexes, short** adjacencyMatrix);
 
 void BFS_simple_v1(int numOfVertexes, short** adjacencyMatrix);
 
+void findTheWayHorseFromAtoB_v1();
+
 #endif /* implement_func_hpp */
