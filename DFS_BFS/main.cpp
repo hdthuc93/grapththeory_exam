@@ -7,11 +7,12 @@
 //
 
 
-#include "implement_func.hpp"
+#include "declare.hpp"
 
 int main(int argc, const char * argv[]) {
-    // insert code here...
+
     findTheWayHorseFromAtoB_v1();
+    
 //    int numOfVertexes;
 //    short** adjacencyMatrix = NULL;
 //    bool resultReadData = readData("data.txt", numOfVertexes, adjacencyMatrix);
@@ -25,7 +26,7 @@ int main(int argc, const char * argv[]) {
 //        
 //        DFS_simple_v1(3, trackingPointDFS, numOfVertexes, adjacencyMatrix);
 //        DFS_simple_v2(numOfVertexes, adjacencyMatrix);
-//        runDFS(numOfVertexes, adjacencyMatrix);
+//
 //        BFS_simple_v1(numOfVertexes, adjacencyMatrix);
 //    }
 //    std::cout << std::endl;

@@ -1,22 +1,32 @@
 //
-//  implement_func.hpp
+//  declare.hpp
 //  DFS_BFS
 //
 //  Created by ThucHD on 3/1/17.
 //  Copyright © 2017 ThucHD. All rights reserved.
 //
 
-#ifndef implement_func_hpp
-#define implement_func_hpp
+#ifndef declare_hpp
+#define declare_hpp
 
 #include <iostream>
+#include <fstream>
+#include <vector>
+#include <stack>
 
-bool readData(std::string fileName, int &numOfVertexes, short** &adjacencyMatrix);
+using namespace std;
+
+// IO data
+bool readData(string fileName, int &numOfVertexes, short** &adjacencyMatrix);
+
+// DFS algorithm
 void DFS_simple_v1(int local, bool trackingPoint[], int numOfVertexes, short** adjacencyMatrix);
 void DFS_simple_v2(int numOfVertexes, short** adjacencyMatrix);
 
+// BFS algorithm
 void BFS_simple_v1(int numOfVertexes, short** adjacencyMatrix);
 
+// Chess algorithm
 void findTheWayHorseFromAtoB_v1();
 
-#endif /* implement_func_hpp */
+#endif /* declare_hpp */
