@@ -67,13 +67,13 @@
 		D4CE7CB61E671EFB001F3F5D /* DFS_BFS */ = {
 			isa = PBXGroup;
 			children = (
-				D4CE7CB71E671EFB001F3F5D /* main.cpp */,
+				D43C94A71E6C67DA001C7C1E /* bfs.cpp */,
+				D43C94AB1E6C68ED001C7C1E /* chess_algorithm.cpp */,
 				D4CE7CBE1E671F56001F3F5D /* dfs.cpp */,
+				D43C94A91E6C683F001C7C1E /* io_data.cpp */,
+				D4CE7CB71E671EFB001F3F5D /* main.cpp */,
 				D4CE7CBF1E671F56001F3F5D /* declare.hpp */,
 				D4CE7CC11E672600001F3F5D /* data.txt */,
-				D43C94A71E6C67DA001C7C1E /* bfs.cpp */,
-				D43C94A91E6C683F001C7C1E /* io_data.cpp */,
-				D43C94AB1E6C68ED001C7C1E /* chess_algorithm.cpp */,
 			);
 			path = DFS_BFS;
 			sourceTree = "<group>";

@@ -11,7 +11,7 @@
 
 int main(int argc, const char * argv[]) {
 
-    findTheWayHorseFromAtoB_v1();
+    findTheWayKnightFromAtoB_v2();
     
 //    int numOfVertexes;
 //    short** adjacencyMatrix = NULL;

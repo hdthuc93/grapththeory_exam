@@ -27,6 +27,7 @@ void DFS_simple_v2(int numOfVertexes, short** adjacencyMatrix);
 void BFS_simple_v1(int numOfVertexes, short** adjacencyMatrix);
 
 // Chess algorithm
-void findTheWayHorseFromAtoB_v1();
+void findTheWayKnightFromAtoB_v1();
+void findTheWayKnightFromAtoB_v2();
 
 #endif /* declare_hpp */
