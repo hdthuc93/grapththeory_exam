@@ -36,32 +36,9 @@ void findTheWayKnightFromAtoB_v1() {
     end.x = 7;
     end.y = 6;
     
-    // create priority the way to go of knight
-    Point nextPoint[8];
-    nextPoint[0].y = 2;
-    nextPoint[0].x = 1;
-    
-    nextPoint[1].y = 1;
-    nextPoint[1].x = 2;
-    
-    nextPoint[2].y = -1;
-    nextPoint[2].x = 2;
-    
-    nextPoint[3].y = -2;
-    nextPoint[3].x = 1;
-    
-    nextPoint[4].y = -2;
-    nextPoint[4].x = -1;
-    
-    nextPoint[5].y = -1;
-    nextPoint[5].x = -2;
-    
-    nextPoint[6].y = 1;
-    nextPoint[6].x = -2;
-    
-    nextPoint[7].y = 2;
-    nextPoint[7].x = -1;
-    
+    // create priority the next position knight can arrive
+    int nextPointX[8] = {1, 2, 2, 1, -1, -2, -2, -1};
+    int nextPointY[8] = {2, 1, -1, -2, -2, -1, 1, 2};
     
     // run DFS
     vector<Point> tracking;
@@ -82,8 +59,8 @@ void findTheWayKnightFromAtoB_v1() {
         
         for(int i = 0; i < 7; ++i) {
             Point desPoint;
-            desPoint.x = currentPoint.x + nextPoint[i].x;
-            desPoint.y = currentPoint.y + nextPoint[i].y;
+            desPoint.x = currentPoint.x + nextPointX[i];
+            desPoint.y = currentPoint.y + nextPointY[i];
             
             if(desPoint.x > 7 || desPoint.x < 0 || desPoint.y > 7 || desPoint.y < 0)
                 continue;
@@ -121,59 +98,59 @@ bool addKnightInStack(Knight k, vector<Knight> &stack) {
     return true;
 }
 
-void addNextPointOfKnight(Point currentPoint, Point end, vector<Knight> &knightInStack) {
+void addNextPosOfKnight(Point currentPos, Point target, vector<Knight> &knightInStack) {
 
-    int deltaX = end.x - currentPoint.x;
-    int deltaY = end.y - currentPoint.y;
+    int deltaX = target.x - currentPos.x;
+    int deltaY = target.y - currentPos.y;
     
     
     Knight nextPosition;
-    nextPosition.previous = currentPoint;
+    nextPosition.previous = currentPos;
     
     //
     if(deltaX < 0) {
-        nextPosition.current.x = currentPoint.x - 2;
+        nextPosition.current.x = currentPos.x - 2;
         
-        nextPosition.current.y = currentPoint.y - 1;
+        nextPosition.current.y = currentPos.y - 1;
         addKnightInStack(nextPosition, knightInStack);
         
-        nextPosition.current.y = currentPoint.y + 1;
+        nextPosition.current.y = currentPos.y + 1;
         addKnightInStack(nextPosition, knightInStack);
         
     } else if(deltaX > 0) {
         
-        nextPosition.current.x = currentPoint.x + 2;
+        nextPosition.current.x = currentPos.x + 2;
         
-        nextPosition.current.y = currentPoint.y - 1;
+        nextPosition.current.y = currentPos.y - 1;
         addKnightInStack(nextPosition, knightInStack);
         
-        nextPosition.current.y = currentPoint.y + 1;
+        nextPosition.current.y = currentPos.y + 1;
         addKnightInStack(nextPosition, knightInStack);
     }
     
     //
     if(deltaY < 0) {
-        nextPosition.current.y = currentPoint.y - 2;
+        nextPosition.current.y = currentPos.y - 2;
         
-        nextPosition.current.x = currentPoint.x - 1;
+        nextPosition.current.x = currentPos.x - 1;
         addKnightInStack(nextPosition, knightInStack);
         
-        nextPosition.current.x = currentPoint.x + 1;
+        nextPosition.current.x = currentPos.x + 1;
         addKnightInStack(nextPosition, knightInStack);
         
     } else if(deltaY > 0) {
         
-        nextPosition.current.y = currentPoint.y + 2;
+        nextPosition.current.y = currentPos.y + 2;
         
-        nextPosition.current.x = currentPoint.x - 1;
+        nextPosition.current.x = currentPos.x - 1;
         addKnightInStack(nextPosition, knightInStack);
         
-        nextPosition.current.x = currentPoint.x + 1;
+        nextPosition.current.x = currentPos.x + 1;
         addKnightInStack(nextPosition, knightInStack);
     }
 }
 
-vector<Knight> numberWayToB(vector<Knight> vtKnightA, vector<Knight> vtKnightB) {
+vector<Knight> discoverTargetPos(vector<Knight> vtKnightA, vector<Knight> vtKnightB) {
     vector<Knight> result;
     
     for(int i = 0; i < vtKnightA.size(); ++i) {
@@ -184,7 +161,8 @@ vector<Knight> numberWayToB(vector<Knight> vtKnightA, vector<Knight> vtKnightB) 
             if((x_distance == 1 && y_distance == 2) || (x_distance == 2 && y_distance == 1)) {
                 result.push_back(vtKnightA[i]);
                 result.push_back(vtKnightB[j]);
-                
+                i = (int) vtKnightA.size();
+                break;
             }
         }
     }
@@ -195,11 +173,11 @@ vector<Knight> numberWayToB(vector<Knight> vtKnightA, vector<Knight> vtKnightB) 
 void findTheWayKnightFromAtoB_v2() {
     // create start and end point in chess
     Point start, end;
-    start.x = 1;
-    start.y = 1;
+    start.x = 3;
+    start.y = 3;
     
-    end.x = 7;
-    end.y = 6;
+    end.x = 5;
+    end.y = 5;
     
     Knight startKnight, endKnight;
     startKnight.current = start;
@@ -213,36 +191,97 @@ void findTheWayKnightFromAtoB_v2() {
     knightFromA.push_back(firstElementA);
     knightFromB.push_back(firstElementB);
     
-    vector<Knight> wayToB;
+    vector<Knight> subWay;
     
-    while(wayToB.size() == 0) {
+    while(subWay.empty()) {
         
         vector<Knight> lastPosOfKnightA = knightFromA[knightFromA.size() - 1];
         vector<Knight> lastPosOfKnightB = knightFromB[knightFromB.size() - 1];
         
-        wayToB = numberWayToB(lastPosOfKnightA, lastPosOfKnightB);
+        subWay = discoverTargetPos(lastPosOfKnightA, lastPosOfKnightB);
         
-        if(wayToB.size() > 0)
+        if(!subWay.empty()) {
             break;
+        }
+        
         
         vector<Knight> newPosKnightA, newPosKnightB;
         
         for(int i = 0; i < lastPosOfKnightA.size(); ++i) {
-            addNextPointOfKnight(lastPosOfKnightA[i].current, end, newPosKnightA);
+            addNextPosOfKnight(lastPosOfKnightA[i].current, end, newPosKnightA);
         }
         knightFromA.push_back(newPosKnightA);
+        subWay = discoverTargetPos(newPosKnightA, lastPosOfKnightB);
+        
+        if(!subWay.empty())
+            break;
             
         for(int i = 0; i < lastPosOfKnightB.size(); ++i) {
-            addNextPointOfKnight(lastPosOfKnightB[i].current, start, newPosKnightB);
+            addNextPosOfKnight(lastPosOfKnightB[i].current, start, newPosKnightB);
         }
         knightFromB.push_back(newPosKnightB);
     }
     
-    for(int i = 0; i < wayToB.size(); i+=2) {
-        cout << wayToB[i].current.x << " - " << wayToB[i].current.y << endl;
-        cout << wayToB[i + 1].current.x << " - " << wayToB[i + 1].current.y << endl;
-        cout << " ----------------- " << endl;
+    vector<Knight> partFromA;
+    vector<Knight> partFromB;
+    
+    partFromA.push_back(subWay[0]);
+    partFromB.push_back(subWay[1]);
+    
+    if(subWay[0].current.x != start.x || subWay[0].current.y != start.y) {
+        for(int indexWayA = (int)knightFromA.size() - 2; indexWayA >= 0; --indexWayA) {
+            
+            Knight currentPos = partFromA[partFromA.size() - 1];
+            
+            if(currentPos.current.x == start.x && currentPos.current.y == start.y)
+                break;
+            
+            vector<Knight> stepPosOfKnights = knightFromA[indexWayA];
+            
+            for(int i = 0; i < stepPosOfKnights.size(); ++i) {
+                if(currentPos.previous.x == stepPosOfKnights[i].current.x && currentPos.previous.y == stepPosOfKnights[i].current.y) {
+                    partFromA.push_back(stepPosOfKnights[i]);
+                    break;
+                }
+            }
+        }
+
     }
+    
+    if(subWay[1].current.x != start.x || subWay[1].current.y != start.y) {
+        
+        for(int indexWayB = (int)knightFromB.size() - 2; indexWayB >= 0; --indexWayB) {
+            
+            Knight currentPos = partFromB[partFromB.size() - 1];
+            
+            if(currentPos.current.x == end.x && currentPos.current.y == end.y)
+                break;
+            
+            
+            vector<Knight> stepPosOfKnights = knightFromB[indexWayB];
+            
+            for(int i = 0; i < stepPosOfKnights.size(); ++i) {
+                if(currentPos.previous.x == stepPosOfKnights[i].current.x && currentPos.previous.y == stepPosOfKnights[i].current.y) {
+                    partFromB.push_back(stepPosOfKnights[i]);
+                    break;
+                }
+            }
+        }
+    }
+    
+    while (!partFromA.empty()) {
+        Knight temp = partFromA[partFromA.size() - 1];
+        partFromA.pop_back();
+        cout << "(" << temp.current.x << ", " << temp.current.y << ") - ";
+    }
+    
+    while (!partFromB.empty()) {
+        Knight temp = partFromB[0];
+        partFromB.erase(partFromB.begin());
+        cout << "(" << temp.current.x << ", " << temp.current.y << ") - ";
+    }
+    
+    cout << endl;
 }
 
 
