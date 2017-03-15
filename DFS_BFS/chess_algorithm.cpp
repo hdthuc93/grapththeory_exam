@@ -173,11 +173,11 @@ vector<Knight> discoverTargetPos(vector<Knight> vtKnightA, vector<Knight> vtKnig
 void findTheWayKnightFromAtoB_v2() {
     // create start and end point in chess
     Point start, end;
-    start.x = 3;
+    start.x = 0;
     start.y = 3;
     
-    end.x = 5;
-    end.y = 5;
+    end.x = 0;
+    end.y = 2;
     
     Knight startKnight, endKnight;
     startKnight.current = start;
