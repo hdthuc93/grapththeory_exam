@@ -34,4 +34,7 @@ void findMinSpanningTree(int numOfvers, short** weighMatrix);
 void findTheWayKnightFromAtoB_v1();
 void findTheWayKnightFromAtoB_v2();
 
+// find series hotel
+void findMaxSeriesHotels();
+
 #endif /* declare_hpp */

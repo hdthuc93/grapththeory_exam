@@ -11,15 +11,16 @@
 
 int main(int argc, const char * argv[]) {
 
+    findMaxSeriesHotels();
 //    findTheWayKnightFromAtoB_v2();
     
-    int numOfVertexes;
-    short** adjacencyMatrix = NULL;
-    short** weightMatrix = NULL;
+//    int numOfVertexes;
+//    short** adjacencyMatrix = NULL;
+//    short** weightMatrix = NULL;
 //    bool resultReadData = readData("data.txt", numOfVertexes, adjacencyMatrix);
-    bool resultReadData = readData("input_prim.txt", numOfVertexes, weightMatrix);
-    
-    if(resultReadData) {
+//    bool resultReadData = readData("input_prim.txt", numOfVertexes, weightMatrix);
+//    
+//    if(resultReadData) {
 //        bool trackingPointDFS[numOfVertexes];
 //        
 //        for (int i = 0; i < numOfVertexes; ++i) {
@@ -31,10 +32,10 @@ int main(int argc, const char * argv[]) {
 //
 //        BFS_simple_v1(numOfVertexes, adjacencyMatrix);
         
-        findMinSpanningTree(numOfVertexes, weightMatrix);
-    }
-    cout << endl;
-    
-    delete adjacencyMatrix;
+//        findMinSpanningTree(numOfVertexes, weightMatrix);
+//    }
+//    cout << endl;
+//    
+//    delete adjacencyMatrix;
     return 0;
 }

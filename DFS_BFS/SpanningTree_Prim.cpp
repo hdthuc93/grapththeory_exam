@@ -15,18 +15,21 @@ struct Edge
 };
 
 void findMinSpanningTree(int numVertexes, short** weightMatrix) {
-    bool treeVers[numVertexes];
-    for(int i = 0; i < numVertexes; ++i) {
-        treeVers[i] = false;
-    }
-    treeVers[0] = true;
     
+    bool treeVers[numVertexes];
     Edge* edges = new Edge[numVertexes - 1];
     bool haveWeightMin = false, isConnected = true;
     int weightMin = 0;
     int t_v1 = 0, t_v2 = 0;
     int count = 0;
     
+    
+    for(int i = 0; i < numVertexes; ++i) {
+        treeVers[i] = false;
+    }
+    treeVers[0] = true; // First vertex is approved
+    
+    // If the graph had spanning tree, it would
     while (count < numVertexes - 1) {
         for(int i = 0; i < numVertexes; ++i) {
             if(treeVers[i]) {
