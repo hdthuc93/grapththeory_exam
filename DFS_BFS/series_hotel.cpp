@@ -64,7 +64,7 @@ void findMaxSeriesHotels() {
         lstTarget.push_back(hotels);
     
     if(lstTarget.empty()) {
-        cout << "Not enough money for any hotels" << endl;
+        cout << "Not enough money to buy any hotels" << endl;
         return;
     }
     
@@ -80,10 +80,5 @@ void findMaxSeriesHotels() {
             cout << "Series of hotel can buy: " << lstTarget[i].headPos << " -> " << lstTarget[i].tailPos << endl;
             cout << "Amount of money: " << lstTarget[i].totalAmount << endl;
         }
-        
     }
-    
-    
-    
-    
 }
