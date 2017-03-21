@@ -27,6 +27,9 @@ void DFS_simple_v2(int numOfVertexes, short** adjacencyMatrix);
 // BFS algorithm
 void BFS_simple_v1(int numOfVertexes, short** adjacencyMatrix);
 
+// Spanning tree
+void findMinSpanningTree(int numOfvers, short** weighMatrix);
+
 // Chess algorithm
 void findTheWayKnightFromAtoB_v1();
 void findTheWayKnightFromAtoB_v2();
