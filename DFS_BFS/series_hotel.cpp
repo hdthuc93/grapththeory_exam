@@ -9,9 +9,9 @@
 #include "declare.hpp"
 
 /*
-    At Ho Chi Minh city has N hotel with different prices
+    At Ho Chi Minh city has series of a hotel(N hotels) with different prices
     I have M money and want to buy series of hotel
-    Find MAX series of hotels I can buy it
+    Find MAX series of hotels I can buy
  */
 
 struct hotelsTarget {
