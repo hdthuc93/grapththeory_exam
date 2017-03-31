@@ -10,6 +10,7 @@
 		D43C94A81E6C67DA001C7C1E /* bfs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D43C94A71E6C67DA001C7C1E /* bfs.cpp */; };
 		D43C94AA1E6C683F001C7C1E /* io_data.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D43C94A91E6C683F001C7C1E /* io_data.cpp */; };
 		D43C94AC1E6C68ED001C7C1E /* chess_algorithm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D43C94AB1E6C68ED001C7C1E /* chess_algorithm.cpp */; };
+		D4628E871E8E48DC00AFDD77 /* a_star_algorithm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D4628E861E8E48DC00AFDD77 /* a_star_algorithm.cpp */; };
 		D478BF7C1E80CFCD000CBA9F /* SpanningTree_Prim.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D478BF7B1E80CFCD000CBA9F /* SpanningTree_Prim.cpp */; };
 		D478BF7E1E816E55000CBA9F /* series_hotel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D478BF7D1E816E55000CBA9F /* series_hotel.cpp */; };
 		D4CE7CB81E671EFB001F3F5D /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D4CE7CB71E671EFB001F3F5D /* main.cpp */; };
@@ -32,14 +33,14 @@
 		D43C94A71E6C67DA001C7C1E /* bfs.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = bfs.cpp; sourceTree = "<group>"; };
 		D43C94A91E6C683F001C7C1E /* io_data.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = io_data.cpp; sourceTree = "<group>"; };
 		D43C94AB1E6C68ED001C7C1E /* chess_algorithm.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = chess_algorithm.cpp; sourceTree = "<group>"; };
-		D478BF7A1E80CF76000CBA9F /* input_prim.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = input_prim.txt; sourceTree = "<group>"; };
+		D4628E861E8E48DC00AFDD77 /* a_star_algorithm.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = a_star_algorithm.cpp; sourceTree = "<group>"; };
 		D478BF7B1E80CFCD000CBA9F /* SpanningTree_Prim.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SpanningTree_Prim.cpp; sourceTree = "<group>"; };
 		D478BF7D1E816E55000CBA9F /* series_hotel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = series_hotel.cpp; sourceTree = "<group>"; };
+		D4B2D4381E82AB6F00D72A38 /* txt_input */ = {isa = PBXFileReference; lastKnownFileType = folder; path = txt_input; sourceTree = "<group>"; };
 		D4CE7CB41E671EFB001F3F5D /* DFS_BFS */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = DFS_BFS; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4CE7CB71E671EFB001F3F5D /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		D4CE7CBE1E671F56001F3F5D /* dfs.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = dfs.cpp; sourceTree = "<group>"; };
 		D4CE7CBF1E671F56001F3F5D /* declare.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = declare.hpp; sourceTree = "<group>"; };
-		D4CE7CC11E672600001F3F5D /* data.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = data.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,16 +73,16 @@
 		D4CE7CB61E671EFB001F3F5D /* DFS_BFS */ = {
 			isa = PBXGroup;
 			children = (
+				D4B2D4381E82AB6F00D72A38 /* txt_input */,
 				D43C94A71E6C67DA001C7C1E /* bfs.cpp */,
 				D43C94AB1E6C68ED001C7C1E /* chess_algorithm.cpp */,
 				D4CE7CBE1E671F56001F3F5D /* dfs.cpp */,
 				D43C94A91E6C683F001C7C1E /* io_data.cpp */,
 				D4CE7CB71E671EFB001F3F5D /* main.cpp */,
 				D4CE7CBF1E671F56001F3F5D /* declare.hpp */,
-				D4CE7CC11E672600001F3F5D /* data.txt */,
-				D478BF7A1E80CF76000CBA9F /* input_prim.txt */,
 				D478BF7B1E80CFCD000CBA9F /* SpanningTree_Prim.cpp */,
 				D478BF7D1E816E55000CBA9F /* series_hotel.cpp */,
+				D4628E861E8E48DC00AFDD77 /* a_star_algorithm.cpp */,
 			);
 			path = DFS_BFS;
 			sourceTree = "<group>";
@@ -148,6 +149,7 @@
 				D478BF7E1E816E55000CBA9F /* series_hotel.cpp in Sources */,
 				D43C94AC1E6C68ED001C7C1E /* chess_algorithm.cpp in Sources */,
 				D43C94AA1E6C683F001C7C1E /* io_data.cpp in Sources */,
+				D4628E871E8E48DC00AFDD77 /* a_star_algorithm.cpp in Sources */,
 				D4CE7CB81E671EFB001F3F5D /* main.cpp in Sources */,
 				D4CE7CC01E671F56001F3F5D /* dfs.cpp in Sources */,
 			);

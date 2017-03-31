@@ -37,4 +37,7 @@ void findTheWayKnightFromAtoB_v2();
 // find series hotel
 void findMaxSeriesHotels();
 
+// a star algorithm
+void a_star(int numOfvers, short** weighMaxtrix);
+
 #endif /* declare_hpp */

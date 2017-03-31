@@ -54,6 +54,7 @@ void findMinSpanningTree(int numVertexes, short** weightMatrix) {
                 }
             }
         }
+        
         if(!haveWeightMin) {
             isConnected = false;
             break;
@@ -80,8 +81,59 @@ void findMinSpanningTree(int numVertexes, short** weightMatrix) {
         
         cout << "Total weight of spanning tree: " << totalWeight << endl;
     }
-    
-    
-    
-    
 }
+
+
+// ----------------------------- version 2 -----------------------------------------
+void findMinSpanningTree_v2(int numVertexes, short** weightMatrix) {
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
