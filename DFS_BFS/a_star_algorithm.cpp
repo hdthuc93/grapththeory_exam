@@ -23,24 +23,83 @@ void a_star(int numOfvers, short** weighMaxtrix) {
     // End node: 10
     
     // distance each node to end node
-    short distance[11] = {5, 8, 2, 4, 6, 5, 10, 10, 7, 8, 0};
+    short distance[11] = { 5, 8, 2, 4, 6, 5, 10, 10, 7, 8, 0 };
+//    short distance[8] = { 15, 8, 7, 9, 1, 2, 3, 0 };
     
-    vector<NODE> notePending;
-    NODE start = { 7, 0, distance[7], NULL };
-    notePending.push_back(start);
+    //
+    bool* isExist = new bool[numOfvers];
+    for(int i = 0; i < numOfvers; ++i) {
+        isExist[i] = false;
+    }
+    
+    // lambda
+//    auto cmp = [](NODE left, NODE right) { return left.h < right.h; };
+//    std::priority_queue<NODE, vector<NODE>, decltype(cmp)> nodePending(cmp);
+    
+    vector<NODE> nodePending;
+    queue<NODE> result;
+    bool isNext = false;
+    NODE start = { 0, 0, distance[0], NULL };
+    nodePending.push_back(start);
+    NODE current;
+    int endNode = -1;
     
     while(true) {
-        NODE current = notePending[0];
+        
+        endNode = getIndexInVector(nodePending, 10);
+        
+        if(endNode != -1) {
+            result.push(nodePending[endNode]);
+            break;
+        }
+        
+        current = nodePending[0];
+        result.push(current);
+        nodePending.erase(nodePending.begin());
         int currentIndex = current.index;
+        isExist[currentIndex] = true;
         for(int i = 0; i < numOfvers; ++i) {
-            if(weighMaxtrix[currentIndex][i] != 0) {
-                int vtIndex = getIndexInVector(notePending, i);
+            if(weighMaxtrix[currentIndex][i] != 0 && !isExist[i]) {
+                isNext = true;
+                NODE next;
+                next.index = i;
+                next.d = current.d + weighMaxtrix[currentIndex][i];
+                next.h = next.d + distance[i];
+                next.prevNode = &result.back();
+                
+                int vtIndex = getIndexInVector(nodePending, i);
+                
                 if(vtIndex == -1) {
+                    nodePending.push_back(next);
+                } else {
+                    NODE existNode = nodePending[vtIndex];
+                    
+                    if(next.d < existNode.d)
+                        nodePending[vtIndex] = next;
                     
                 }
             }
         }
+        
+        if(!isNext)
+            break;
+        
+        isNext = false;
+        quickSort(nodePending, 0, (int)nodePending.size() - 1);
     }
+    
+    
+    // show result
+    
+    if(endNode != -1) {
+        NODE* temp = &result.back();
+
+        while(temp != NULL) {
+            cout << "Index: " << temp -> index << endl;
+            temp = temp -> prevNode;
+        }
+    }
+        
 }
 
 void quickSort(vector<NODE> &vt, int first, int last) {
