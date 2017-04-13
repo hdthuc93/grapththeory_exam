@@ -153,6 +153,5 @@ int getIndexInVector(vector<NODE> vt, int nodeIndex) {
         if(vt[i].index == nodeIndex)
             index = i;
     }
-    
     return index;
 }
